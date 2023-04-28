@@ -1,0 +1,50 @@
+The directory with the code must be:  drwxr-xr-x MYUSERNAME www-data etc
+
+Here is a summary.
+
+1. cd                        // go to your home directory
+2. chmod o+x public_html     // make sure that your web directory is accessible by everyone
+3. cd public_html            // go to your web space
+4. cp ~sgauch/public_html/4523/S23/hw/project/*.tar .     // copy the 4 tar files to your new directory
+5. tar xvf project_java.tar   // untar the sample java code
+6. chmod o+x project_java     // make the project_java directory accessible by everyone
+7. cd project_java
+8. Open:  http://www.csce.uark.edu/~cjwarstl/WarstlerC_Database_Project/hello.html in a web browser
+9. Edit jdbc_insert_item.java; replace MYUSERNAME and MYMYSQLPASSWORD
+10. sh build_jdbc.bash         // compile the sample code
+11. Open:  http://www.csce.uark.edu/~cjwarstl/WarstlerC_Database_Project/hello.php in a web browser
+12. Open:  http://www.csce.uark.edu/~cjwarstl/WarstlerC_Database_Project/jdbc_insert_item.php in a web browser
+
+
+build_jdbc.bash
+   The bash shell script that compiles everything together.
+
+hello.html
+   A static html page to check that your project directory is accessible on the web
+   You can view this page at http://www.csce.uark.edu/~sgauch/project_java/hello.html
+
+hello.php
+   A php page that uses a form to get user input, then calls hello.class to echo it to the screen.
+   This checks that you can call php in your own directory and have it pass parameters to
+   an executable program.
+   You can view this page at http://www.csce.uark.edu/~sgauch/project_java/hello.php
+
+hello.java
+   The executable program called from hello.php.
+
+jdbc_db.h and jdbc_db.java
+   The jdbc_db class definition (header and implementation files).
+   This class contains a handful of useful functions that use jdbc to connect to mysql.
+
+jdbc_insert_item.java
+   A java program that includes (and uses) the jdbc_db class.  It is given arguments on the
+   command line, in the order:  name price_per_lb roasting. This is just a sample and has been provided to show the interaction among MYSQL,PHP and Java
+   e.g.,
+      turing$ java .: java -cp .:mysql-connector-java-5.1.40-bin.jar jdbc_insert_item Best_Coffee 12 M
+   It connects to mysql to insert that item into the ITEM table. The program has the ID hard-coded, so you either you change ID everytime you run your program or have your own function that increments ID everytime you run your program.
+
+jdbc_insert_item.php
+   The php program that displays a form, parses the user's input, then calls a program,
+   i.e., jdbc_insert_item.class, using a system call.
+   The program called connects to mysql to insert a record into a table.
+   You can view this page at http://www.csce.uark.edu/~sgauch/project_java/jdbc_insert_item.php
